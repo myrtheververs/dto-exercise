@@ -31,11 +31,6 @@ public class TilService {
         return tilMapper.toEntity(createTilDto);
     }
 
-/*
-    public Til addTil(Til tilToAdd) {
-        return tilRepository.addTil(tilToAdd);
-    }
-*/
 
     public void removeTil(String id) {
         tilRepository.deleteTil(UUID.fromString(id));
