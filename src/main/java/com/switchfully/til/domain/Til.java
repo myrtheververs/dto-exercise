@@ -6,9 +6,7 @@ import java.util.UUID;
 public class Til {
 
     private final String owner;
-
     private final String knowledgeOfTheDay;
-
     private final UUID uuid;
 
     // UI needs ownerName
