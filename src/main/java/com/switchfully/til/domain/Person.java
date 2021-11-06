@@ -1,9 +1,10 @@
-package com.switchfully.til;
+package com.switchfully.til.domain;
 
 import java.util.Objects;
 
 public class Person {
     private final String name;
+
     public Person(String name) {
         this.name = name;
     }

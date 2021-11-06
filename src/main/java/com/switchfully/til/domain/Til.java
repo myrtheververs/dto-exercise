@@ -1,42 +1,41 @@
-package com.switchfully.til;
+package com.switchfully.til.domain;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public class Til {
-    // UI needs ownerName
-    // UI also needs temployee
-    // Postman needs owner
-    // In java, a Person is needed
+
     private final String owner;
-    // UI needs til
-    // Postman needs knowledgeOfTheDay
+
     private final String knowledgeOfTheDay;
-    // UI needs tid
-    // Postman needs uuid
+
     private final UUID uuid;
 
-    public Til(String owner, String knowledgeOfTheDay, UUID uuid) {
-        this.owner = owner;
-        this.knowledgeOfTheDay = knowledgeOfTheDay;
-        this.uuid = uuid;
-    }
-
     // UI needs ownerName
     // UI also needs temployee
-    // Postman needs owner
+    //       Postman needs owner
+    //       In java, a Person is needed
+
+    // UI needs til
+    //      Postman needs knowledgeOfTheDay
+
+    // UI needs tid
+    //      Postman needs uuid
+
+    public Til(String owner, String knowledgeOfTheDay) {
+        this.owner = owner;
+        this.knowledgeOfTheDay = knowledgeOfTheDay;
+        this.uuid = UUID.randomUUID();
+    }
+
     public String getOwner() {
         return owner;
     }
 
-    // UI needs til
-    // Postman needs knowledgeOfTheDay
     public String getKnowledgeOfTheDay() {
         return knowledgeOfTheDay;
     }
 
-    // UI needs tid
-    // Postman needs uuid
     public UUID getUuid() {
         return uuid;
     }
@@ -52,5 +51,14 @@ public class Til {
     @Override
     public int hashCode() {
         return Objects.hash(getUuid());
+    }
+
+    @Override
+    public String toString() {
+        return "Til{" +
+                "owner='" + owner + '\'' +
+                ", knowledgeOfTheDay='" + knowledgeOfTheDay + '\'' +
+                ", uuid=" + uuid +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
-package com.switchfully.til;
+package com.switchfully.til.service;
 
+import com.switchfully.til.domain.Til;
+import com.switchfully.til.repository.TilRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,7 @@ public class TilService {
     public TilService(TilRepository tilRepository) {
         this.tilRepository = tilRepository;
     }
+
 
     public List<Til> getTils() {
         return tilRepository.getTils();
