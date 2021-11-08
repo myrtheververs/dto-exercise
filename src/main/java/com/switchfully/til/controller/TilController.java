@@ -2,8 +2,8 @@ package com.switchfully.til.controller;
 
 import com.switchfully.til.domain.Til;
 import com.switchfully.til.service.TilService;
-import com.switchfully.til.dto.CreateTilDto;
-import com.switchfully.til.dto.ViewTilDto;
+import com.switchfully.til.service.dto.CreateTilDto;
+import com.switchfully.til.service.dto.ViewTilDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tils")
@@ -31,31 +30,30 @@ public class TilController {
     }
 
 
-//OK
+
     @GetMapping
     public List<ViewTilDto> getAllTils() {
         return tilService.getTils();
     }
 
-//OK
+
     @PostMapping(consumes = {"application/json"})
-    public Til addTilWithPostman(@RequestBody CreateTilDto createTilDto) {
-        return tilService.addTil(createTilDto);
+    public ViewTilDto addTilWithPostman(@RequestBody CreateTilDto createTilDto) {
+        return tilService.addTilWithPostman(createTilDto);
     }
 
 
-//OK
     // @RequestBody does not like application/x-www-form-urlencoded information
     // Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
     @PostMapping(consumes = {"application/x-www-form-urlencoded"})
-    public String addTilWithUI(CreateTilDto createTilDto) {
+    public String addTilWithUI(@RequestBody CreateTilDto createTilDto) {
         logger.info("Creating til...");
         tilService.addTil(createTilDto);
         System.out.println(createTilDto);
         return "Thank you " + createTilDto.getOwnerName() + ", your #TIL has been added";
     }
 
-//OK
+
     @DeleteMapping("/{id}")
     public String deleteTil(@PathVariable String id) {
         logger.info("Removing til...");
@@ -64,7 +62,7 @@ public class TilController {
     }
 
 
-//v???
+//???
     // @RequestBody does not like application/x-www-form-urlencoded information
     // Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
     @PatchMapping("/{id}/like")

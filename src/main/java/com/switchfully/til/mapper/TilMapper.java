@@ -1,8 +1,8 @@
 package com.switchfully.til.mapper;
 
 import com.switchfully.til.domain.Til;
-import com.switchfully.til.dto.CreateTilDto;
-import com.switchfully.til.dto.ViewTilDto;
+import com.switchfully.til.service.dto.CreateTilDto;
+import com.switchfully.til.service.dto.ViewTilDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,6 +20,11 @@ public class TilMapper {
 
     public ViewTilDto toViewDto(Til til) {
         return new ViewTilDto(til.getUuid().toString(), til.getOwner(), til.getKnowledgeOfTheDay());
+    }
+
+    public ViewTilDto toViewDto(CreateTilDto createTilDto) {
+        Til til = new Til(createTilDto.getOwnerName(), createTilDto.getTil());
+        return toViewDto(til);
     }
 
     public Til toEntity(CreateTilDto createTilDto) {

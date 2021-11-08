@@ -1,8 +1,8 @@
 package com.switchfully.til.service;
 
 import com.switchfully.til.domain.Til;
-import com.switchfully.til.dto.CreateTilDto;
-import com.switchfully.til.dto.ViewTilDto;
+import com.switchfully.til.service.dto.CreateTilDto;
+import com.switchfully.til.service.dto.ViewTilDto;
 import com.switchfully.til.mapper.TilMapper;
 import com.switchfully.til.repository.TilRepository;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,10 @@ public class TilService {
 
     public Til addTil(CreateTilDto createTilDto) {
         return tilMapper.toEntity(createTilDto);
+    }
+
+    public ViewTilDto addTilWithPostman(CreateTilDto createTilDto) {
+        return tilMapper.toViewDto(createTilDto);
     }
 
 

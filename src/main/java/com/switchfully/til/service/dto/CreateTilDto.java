@@ -1,4 +1,4 @@
-package com.switchfully.til.dto;
+package com.switchfully.til.service.dto;
 
 public class CreateTilDto {
 
